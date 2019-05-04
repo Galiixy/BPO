@@ -2,12 +2,12 @@ package jeux.crazy;
 
 import java.util.Scanner;
 
-public class AppliCrazy {
+public class AppliCrazy implement AppliJeu{
 	public static void main(String[] args) {
 		Paquet p = new Paquet();
 		Carte depart = p.piocher();
 		Carte objectif = p.piocher();
-		System.out.println("de " + depart + " à " + objectif);
+		System.out.println("de " + depart + " Ã  " + objectif);
 		System.out.println("ki ->, lo <-, so <->, ni ^_, ma _^");
 		System.out.println("entrez votre ordre, vous n'avez qu'une seule chance :");
 		@SuppressWarnings("resource")
