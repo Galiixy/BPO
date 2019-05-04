@@ -6,9 +6,10 @@ import static jeux.tictactoe.TicTacToe.Pièce.*;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+import AppliJeu.AppliJeu;
 
-public class AppliTicTacToe {
-	public static void main(String[] args) {
+public class AppliTicTacToe implements AppliJeu{
+	public Etat jouer(String[] args) {
 		TicTacToe tic = new TicTacToe();
 		Pièce j = ROND;
 		System.out.println(tic);
@@ -23,12 +24,18 @@ public class AppliTicTacToe {
 			j = j == ROND ? CROIX : ROND;
 		}
 		j = tic.gagnant();
-		if (j == null)
+		if (j == null) {
 			System.out.println("Match nul");
-		else if (j == ROND)
+			return Etat.égalité;
+		}
+		else if (j == ROND) {
 			System.out.println("Bravo");
-		else
+			return Etat.gagné;
+		}
+		else {
 			System.out.println("Dommage");
+			return Etat.perdu;
+		}
 			
 	}
 

@@ -6,8 +6,10 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-public class AppliSuite {
-	public static void main(String[] args) {
+import AppliJeu.AppliJeu;
+
+public class AppliSuite implements AppliJeu {
+	public Etat jouer(String[] args) {
 		List<Suite> suites = Arrays.asList(
 				  new SuiteMystère()
 					, new SuiteArithmétique(1, 10)
@@ -24,9 +26,14 @@ public class AppliSuite {
 		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		BigInteger valeur = new BigInteger(sc.next()); // peut lever NumberFormatException
-		if (valeur.equals(aTrouver))
+		if (valeur.equals(aTrouver)) {
 			System.out.println("Bravo");
-		else
+			return Etat.gagné;
+			
+		}
+		else {
 			System.out.println("Dommage");
+			return Etat.perdu;
+		}
 	}
 }

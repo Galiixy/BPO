@@ -5,11 +5,11 @@ import java.util.Scanner;
 import AppliJeu.*;
 
 public class AppliCrazy implements AppliJeu {
-	public Etat jouer() {
+	public Etat jouer(String[] args) {
 		Paquet p = new Paquet();
 		Carte depart = p.piocher();
 		Carte objectif = p.piocher();
-		System.out.println("de " + depart + " Ã  " + objectif);
+		System.out.println("de " + depart + " à " + objectif);
 		System.out.println("ki ->, lo <-, so <->, ni ^_, ma _^");
 		System.out.println("entrez votre ordre, vous n'avez qu'une seule chance :");
 		@SuppressWarnings("resource")
@@ -36,7 +36,7 @@ public class AppliCrazy implements AppliJeu {
 			}
 			if (c.equals(objectif)) {
 				System.out.println("Bravo");
-				return Etat.gagnÃ©;
+				return Etat.gagné;
 			}
 			else {
 				System.out.println("Dommage");
@@ -46,7 +46,7 @@ public class AppliCrazy implements AppliJeu {
 		}
 		catch (RuntimeException e) {
 				System.out.println(e.getMessage());
-				return Etat.Ã©galitÃ©;
+				return Etat.égalité;
 		}
 		
 	}

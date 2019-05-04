@@ -13,8 +13,10 @@ import java.util.stream.Stream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-public class AppliPendu {
-	public static void main(String[] args) {
+import AppliJeu.AppliJeu;
+
+public class AppliPendu implements AppliJeu{
+	public Etat jouer(String[] args) {
 		final int MAX = args.length > 0 && args[0].equals("-hard") ? 10 : 8;
 		final int MIN = args.length > 0 && args[0].equals("-hard") ? 6 : 4;
 		String zipName = "ressources/pendu/francais.zip";
@@ -30,7 +32,7 @@ public class AppliPendu {
 		}
 		catch (IOException | NullPointerException e) {
 			System.out.println("le fichier des mots français " + zipName + " est inaccessible");
-			return;
+			return Etat.erreur;
 		}
 		Random r = new Random();
 		Pendu p = new Pendu(mots.get(r.nextInt(mots.size())));
@@ -44,9 +46,13 @@ public class AppliPendu {
 			p.jouer(c);
 			System.out.println(p);
 		}
-		if (p.gagné())
+		if (p.gagné()) {
 			System.out.println("Bravo");
-		else
+			return Etat.gagné;
+		}
+		else {
 			System.out.println("Dommage");
+			return Etat.perdu;
+		}
 	}
 }

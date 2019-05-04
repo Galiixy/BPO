@@ -2,9 +2,10 @@ package jeux.pppg;
 
 import java.util.Random;
 import java.util.Scanner;
+import AppliJeu.AppliJeu;
 
-public class AppliPlusPetitPlusGrand {
-	public static void main(String[] args) {
+public class AppliPlusPetitPlusGrand implements AppliJeu{
+	public Etat jouer(String[] args) {
 		final int MAX = args.length > 0 && args[0].equals("-hard") ? 1000 : 100;
 		final long NB = Math.round(Math.log(MAX) / Math.log(2));
 
@@ -25,9 +26,13 @@ public class AppliPlusPetitPlusGrand {
 			valeur = sc.nextInt();
 			++nb;
 		}
-		if (valeur == aTrouver)
+		if (valeur == aTrouver) {
 			System.out.println("Bravo");
-		else
+			return Etat.gagné;
+		}
+		else {
 			System.out.println("Dommage");
+			return Etat.perdu;
+		}
 	}
 }

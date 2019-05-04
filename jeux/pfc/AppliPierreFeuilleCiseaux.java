@@ -4,7 +4,9 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
-public class AppliPierreFeuilleCiseaux {
+import AppliJeu.AppliJeu;
+
+public class AppliPierreFeuilleCiseaux implements AppliJeu {
 	enum Choix {
 		Pierre, Feuille, Ciseaux;
 				
@@ -18,7 +20,7 @@ public class AppliPierreFeuilleCiseaux {
 		}
 	}
 	
-	public static void main(String[] args) {
+	public  Etat jouer(String[] args) {
 		@SuppressWarnings("resource")
 		Scanner s = new Scanner(System.in);
 		Random r = new Random();
@@ -43,9 +45,13 @@ public class AppliPierreFeuilleCiseaux {
 			}
 			System.out.println("vous avez " + vous + " point(s) et moi " + moi + " point(s)");
 		}
-		if (vous > moi)
+		if (vous > moi) {
 			System.out.println("Bravo");
-		else
+			return Etat.gagné;
+		}
+		else {
 			System.out.println("Dommage");
+			return Etat.perdu;
+		}
 	}
 }
