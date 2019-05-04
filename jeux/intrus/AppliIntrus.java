@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+import AppliJeu.AppliJeu;
+
 public class AppliIntrus implements AppliJeu {
 	private static class Question {
 		public final List<String> mots;
@@ -18,7 +20,7 @@ public class AppliIntrus implements AppliJeu {
 		}
 	}
 	
-	public static String jouer() {
+	public Etat jouer() {
 		List<Question> questions = Arrays.asList(
 				new Question(Arrays.asList("pomme", "ananas", "poisson", "citron"), 3)
 				, new Question(Arrays.asList("fer", "igloo", "acier", "brique"), 2)
@@ -41,13 +43,18 @@ public class AppliIntrus implements AppliJeu {
 		Scanner sc = new Scanner(System.in);
 		try {
 			int intrus = sc.nextInt();
-			if (intrus == q.intrus)
+			if (intrus == q.intrus) {
 				System.out.println("Bravo");
-			else
+				return Etat.gagné;
+			}
+			else {
 				System.out.println("Dommage");
+				return Etat.perdu;
+			}
 		}
 		catch (Exception e) {
 			System.out.println("Raté");
+			return Etat.perdu;
 		}
 	}
 }
