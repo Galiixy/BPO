@@ -1,4 +1,8 @@
+package AppliJeu;
 
 public interface AppliJeu {
-  public int jouer();
+  public Etat jouer();
+  public enum Etat{
+	  gagné, perdu, égalité, erreur
+  }
 }
