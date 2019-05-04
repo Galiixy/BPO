@@ -2,8 +2,8 @@ package jeux.crazy;
 
 import java.util.Scanner;
 
-public class AppliCrazy implement AppliJeu{
-	public static void main(String[] args) {
+public class AppliCrazy implements AppliJeu{
+	public static int jouer() {
 		Paquet p = new Paquet();
 		Carte depart = p.piocher();
 		Carte objectif = p.piocher();
@@ -32,10 +32,14 @@ public class AppliCrazy implement AppliJeu{
 					throw new IllegalArgumentException(od + " : commande inconnue");
 				System.out.println(od + " -> " + c);
 			}
-			if (c.equals(objectif))
+			if (c.equals(objectif)){
 				System.out.println("Bravo");
-			else
+				return 1;
+			}
+			else{
 				System.out.println("Dommage");
+				return -1;
+			}
 		}
 		catch (RuntimeException e) {
 				System.out.println(e.getMessage());
