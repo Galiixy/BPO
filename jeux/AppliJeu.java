@@ -1,4 +1,4 @@
 
 public interface AppliJeu {
-  public String jouer();
+  public int jouer();
 }
