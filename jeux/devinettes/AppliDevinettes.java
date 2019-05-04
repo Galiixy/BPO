@@ -5,8 +5,10 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-public class AppliDevinettes {
-	public static int jouer() {
+import AppliJeu.AppliJeu;
+
+public class AppliDevinettes implements AppliJeu{
+	public Etat jouer() {
 		List<List<String>> devinettes = Arrays.asList( 
 				  Arrays.asList("Je suis entre 188 et 190, mais je ne suis pas 189. Qui suis-je ?", "et")
 				, Arrays.asList("J'ai une serrure mais pas de porte. Qui suis-je ?", "cadenas")
@@ -25,9 +27,9 @@ public class AppliDevinettes {
 		for (int i = 1; i < q.size(); ++i)
 			if (réponse.contains(q.get(i))) {
 				System.out.println("Bravo");
-				return 1;
+				return Etat.gagné;
 			}
 		System.out.println("Dommage");
-		return -1;
+		return Etat.perdu;
 	}
 }
